@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Crazy Pizza</title>
+  <link rel="stylesheet" href="pizza.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="container">
+    <h1>Crazy Pizza</h1>
+    <nav>
+      <ul>
+        <li><a href="pizza.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="findus.html">Find Us</a></li>
+        <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
+        <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Shop Header -->
+  <div class="shop-header">
+    <h2>Our Menu</h2>
+    <p>Browse your favorites and grab a slice today!</p>
+  </div>
+
+  <!-- Shop Items -->
+  <div class="shop-grid">
+    <!-- Veggie Pizza -->
+    <div class="shop-item">
+      <img src="veggie-pizza-recipe-09-2.jpg" alt="Veggie Pizza">
+      <h3>Veggie Pizza</h3>
+      <p>$10.99</p>
+      <button onclick="addToCart('Veggie Pizza', 10.99)">Add to Cart</button>
+    </div>
+
+    <!-- Chicken Pizza -->
+    <div class="shop-item">
+      <img src="BBQ-chicken-pizza-recipe-9.jpg" alt="Chicken Pizza">
+      <h3>Chicken Pizza</h3>
+      <p>$12.49</p>
+      <button onclick="addToCart('Chicken Pizza', 12.49)">Add to Cart</button>
+    </div>
+
+    <!-- Pepperoni Pizza -->
+    <div class="shop-item">
+      <img src="pepperoni.jpeg" alt="Pepperoni Pizza">
+      <h3>Pepperoni Pizza</h3>
+      <p>$11.99</p>
+      <button onclick="addToCart('Pepperoni Pizza', 11.99)">Add to Cart</button>
+    </div>
+
+    <!-- Honey Garlic Chicken Pizza -->
+    <div class="shop-item">
+      <img src="honey-chicken.jpg" alt="Honey Garlic Chicken Pizza">
+      <h3>Honey Garlic Chicken</h3>
+      <p>$13.49</p>
+      <button onclick="addToCart('Honey Garlic Chicken', 13.49)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Crazy Pizza. All rights reserved.</p>
+  </footer>
+
+  <!-- Script to simulate adding to cart -->
+  <script>
+    function addToCart(itemName, price) {
+
+// let cartItem = [];
+
+let cartItem = JSON.parse(localStorage.getItem("cartItem") || "[]");
+
+cartItem.push({itemName: itemName, price: parseFloat(price)});
+
+localStorage.setItem("cartItem", JSON.stringify(cartItem));
+
+cartItem.forEach(item => {
+  console.log(`${item.itemName} $${item.price}`)
+});
+
+ console.log("Inspecting cart data before sum:", cartItem); 
+
+const totalprice = cartItem.reduce((sum, item) => sum + item.price, 0);
+console.log(`Total Price: ${totalprice}`);
+
+
+    }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+      // alert(itemName + " added to cart! ($" + price.toFixed(2) + ")");
+      // You can save to localStorage or backend here
+      // let cartItems;
+      // try {
+      //   cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]")
+      //   [{price: 0}, {price: 200}]
+
+      //   const price = 0;
+
+      //   for(const i = 0; i < cartItems.length, i++) {
+      //     const item = cartItem[i]
+      //     price = price + item.price
+      //   }
+
+      //   function doublePrice(item) {
+      //     return {...item, price: item.price + 1}
+      //   }
+
+      //   cartItems.map(doublePrice)
+
+      //   // myList = [1, 2, 3]
+
+      //   const total = 0
+      //   const doubleList = []
+      //   myList.forEach(item => {
+      //     doubleList.push(item * 2)
+      //   })
+
+      //   const doubleMyList = myList.map(item => {
+      //     return item * 2
+      //   }) // => [2, 4, 6]
+
+
+
+      // } catch {
+      //   cartItems = []
+      // }
+      // cartItems.push({itemName, price})
+      // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+      // 
+    
+  </script>
+
+</body>
+</html>
